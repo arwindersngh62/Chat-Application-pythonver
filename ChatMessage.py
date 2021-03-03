@@ -8,6 +8,6 @@ class ChatMessage():
     def getMessage():
         return self._message
         
-abc = ChatMessage('WHOISIN','hello')
+#abc = ChatMessage('WHOISIN','hello')
 
 		

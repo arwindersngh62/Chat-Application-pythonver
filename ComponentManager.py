@@ -56,7 +56,7 @@ class ComponentManager():
         sys.exit(1)
         
         
-    def fatalException(e):
+    def fatalException(self,e):
         if (self._handliingFatalException):
             sys.exit(1)
         self._handliingFatalException = True
@@ -66,6 +66,6 @@ class ComponentManager():
             self.stopComponents()
         sys.exit(1)
 
-#ComMan_test = ComponentManager.Instance()
+ComMan_test = ComponentManager.Instance()
 #ComMan_configtest.startComponent("ConfigManager.ConfigManager")
-#ComMan_test.startComponent("ChatApplicationServerPropertiesLoader")
+ComMan_test.startComponent("ChatApplicationServerPropertiesLoader")

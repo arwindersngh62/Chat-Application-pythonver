@@ -9,7 +9,7 @@ class SocketConnectionHandler(Thread):
                 self._mustShutdown = False
                 self._isSocketOpen = False
                 self._handlerName = None
-                self._handelConnection = None
+                self._handleConnection = None
                 self._socketWriter = None
                 self._socketReader = None
                 Thread.__init__(self)
@@ -60,7 +60,7 @@ class SocketConnectionHandler(Thread):
         def run(self):
                 while (not(self._mustShutdown)):
                         if (self._handleConnection == None):
-                                self.wait()
+                                pass
                         if (not(self._handleConnection == None)):
                                 self.recieveContent()
                                 self.socketConnectionHandlerRelease()

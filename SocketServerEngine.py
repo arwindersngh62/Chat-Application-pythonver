@@ -3,6 +3,7 @@ import socket
 from components import GenericThreadedComponent
 from ServerStatistics import ServerStatistics
 from SocketConnectionHandler import SocketConnectionHandler
+from ComponentManager import ComponentManager
 class Singleton:
 	def __init__(self,cls):
 		self.cls = cls
@@ -53,11 +54,11 @@ class SocketServerEngine(GenericThreadedComponent):
 			connectionHandlingPool.append(handler)
 		#print(stuff)
 		try:
-			chatApplication_Server = getServer()
+			chatApplication_Server = self.getServer()
 			isRunning = True
 		
-		except:
-			ComponentManager.Instance().fatalException()
+		except Exception as e:
+			ComponentManager.Instance().fatalException(e)
 		super.initialize()
 
 	def removeConnHandlerOccp(self,sch):
