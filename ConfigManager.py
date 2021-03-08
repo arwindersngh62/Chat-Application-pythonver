@@ -54,4 +54,4 @@ class ConfigManager(IComponent):
 			self._configValues[str(key)] = str(value)
 			print("[ChatApplicationServer_ConfigManager]: Overriding config entry '" + key + "'")
 
-aa = ConfigManager.Instance()
+#aa = ConfigManager.Instance()

@@ -36,29 +36,15 @@ class GenericThreadedComponent(IComponent,Thread,metaclass=abc.ABCMeta):
 		self._mustshutdown = True 
 	
 	def componentMain(self):
-		print('Hello')
-		#raise NotImplementedError
+		raise NotImplementedError
 
 	@abc.abstractmethod
 	def run(self):
 		self.componentMain()
 
 
-class newone(GenericThreadedComponent):
-	def initialize(self):
-		self._mustshutdown = False
-		self.start()
-		
-	def shutdown(self):
-		self._mustshutdown = True 
 
-	
-	def run(self):
-		self.componentMain()
 		
-aaa = newone()
-aaa.initialize()
-#aaa.run()
 
 
 
