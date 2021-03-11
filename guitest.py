@@ -12,6 +12,7 @@ class Application(tk.Frame):
         
 
     def create_widgets(self):
+        self._root = tk
         self._topFrame = tk.Frame(self)
         self._bottomFrame = tk.Frame(self)
         
@@ -64,8 +65,13 @@ class Application(tk.Frame):
     def createP2PChat(self):
         self._P2PChat = tk.Toplevel()
 
+    def appendtafunc(self):
+        self._textBoxTop.insert(tk.END,"Hello \n")
+        root.after(1000,self.appendtafunc)
+
 root = tk.Tk()
 root.resizable(0, 0)
 root.title('Chat Client')
 app = Application(master=root)
+root.after(1000,app.appendtafunc)
 app.mainloop()
