@@ -1,6 +1,4 @@
 import sys
-from ConfigManager import ConfigManager
-from ChatApplicationServerPropertiesLoader import ChatApplicationServerPropertiesLoader 
 class Singleton:
 	def __init__(self,cls):
 		self.cls = cls
@@ -23,9 +21,12 @@ class ComponentManager():
     def __init__(self):
         self._activeComponents = []
         self._handliingFatalException = False
-        self._shuttingDown = False
+        self._shutingDown = False
 
     def startComponentsList(self,componentNames):
+        from ConfigManager import ConfigManager
+        from ChatApplicationServerPropertiesLoader import ChatApplicationServerPropertiesLoader 
+        from socketServerGUI import SocketServerGUI
         try:	
             for nextComponent in componentNames:
                 com = eval(nextComponent).Instance()
@@ -37,6 +38,9 @@ class ComponentManager():
         return(True)
         
     def startComponent(self,componentName):
+        from ConfigManager import ConfigManager
+        from ChatApplicationServerPropertiesLoader import ChatApplicationServerPropertiesLoader 
+        from socketServerGUI import SocketServerGUI
         try:
             com = eval(componentName).Instance()
 	    
@@ -48,7 +52,7 @@ class ComponentManager():
         return(True)
 
     def stopComponents(self):
-        self._shuttingDown = True
+        self._shutingDown = True
         for com in self._activeComponents:
             print("[ChatApplicationServer_ComponentManger]: Stopping " + type(com).__name__())
             com.shutdown()
@@ -62,10 +66,10 @@ class ComponentManager():
         self._handliingFatalException = True
         print("-----------------------------------");
         print("[ChatApplicationServer_ComponentManager]: FATAL EXCEPTION...\n" + str(e));
-        if (not(self._shuttingDown)):
+        if (not(self._shutingDown)):
             self.stopComponents()
         sys.exit(1)
 
-ComMan_test = ComponentManager.Instance()
+#ComMan_test = ComponentManager.Instance()
 #ComMan_configtest.startComponent("ConfigManager.ConfigManager")
-ComMan_test.startComponent("ChatApplicationServerPropertiesLoader")
+#ComMan_test.startComponent("ChatApplicationServerPropertiesLoader")

@@ -1,0 +1,2 @@
+str = "ConfigManager"
+form eval(ConfigManager) import eval(ConfigManager)
